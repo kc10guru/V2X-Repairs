@@ -17,6 +17,27 @@
   </div>
 </header>
 
+<section class="bg-white py-8 shadow-md">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center mb-4">Search by Part Number</h2>
+    <div class="flex items-center gap-4">
+      <input 
+        type="text" 
+        id="partNumberSearch" 
+        placeholder="Enter part number (e.g., WS-1001)" 
+        class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-900"
+      >
+      <button 
+        onclick="searchPartNumber()" 
+        class="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+      >
+        Search
+      </button>
+    </div>
+    <div id="searchError" class="mt-3 text-red-600 text-center hidden"></div>
+  </div>
+</section>
+
 <section class="bg-blue-100 py-16 text-center">
   <h2 class="text-4xl font-bold mb-4">Our Repair Station Locations</h2>
   <p class="text-lg max-w-3xl mx-auto">V2X operates FAA-certified repair stations across the United States, providing specialized aircraft maintenance, repair, and overhaul services. Select a location below to learn more about our capabilities.</p>
@@ -73,6 +94,71 @@
 <footer class="bg-gray-200 text-center py-6 mt-12">
   <p class="text-sm">&copy; 2025 V2X FAA Repair Stations | Nationwide Service</p>
 </footer>
+
+<script>
+  // Database of part numbers and their corresponding pages
+  const partDatabase = {
+    // Windshield parts
+    '101-384025-23': { page: 'windshield.html', name: 'Windshield Assembly - King Air / C12 LH' },
+    '101-384025-24': { page: 'windshield.html', name: 'Windshield Assembly - King Air / C12 RH' },
+    'WS-1003': { page: 'windshield.html', name: 'Windshield Panel - UH-60' },
+    
+    // Landing Gear parts
+    'LG-2001': { page: 'landing-gear.html', name: 'Main Landing Gear - C-130' },
+    'LG-2002': { page: 'landing-gear.html', name: 'Nose Landing Gear - F-16' },
+    'LG-2003': { page: 'landing-gear.html', name: 'Landing Gear Strut Assembly' },
+    
+    // Wheel parts
+    'WH-3001': { page: 'wheels.html', name: 'Main Wheel Assembly' },
+    'WH-3002': { page: 'wheels.html', name: 'Nose Wheel Assembly' },
+    'WH-3003': { page: 'wheels.html', name: 'Wheel Hub Assembly' },
+    
+    // Brake parts
+    'BR-4001': { page: 'brakes.html', name: 'Brake Assembly - C-130' },
+    'BR-4002': { page: 'brakes.html', name: 'Brake Pad Set' },
+    'BR-4003': { page: 'brakes.html', name: 'Brake Disc Assembly' },
+    
+    // Avionics parts
+    'AV-5001': { page: 'avionics.html', name: 'Navigation System' },
+    'AV-5002': { page: 'avionics.html', name: 'Communication Radio' },
+    'AV-5003': { page: 'avionics.html', name: 'Flight Control Unit' }
+  };
+
+  function searchPartNumber() {
+    const searchInput = document.getElementById('partNumberSearch');
+    const errorDiv = document.getElementById('searchError');
+    const partNumber = searchInput.value.trim().toUpperCase();
+    
+    // Clear previous errors
+    errorDiv.classList.add('hidden');
+    
+    if (!partNumber) {
+      showError('Please enter a part number');
+      return;
+    }
+    
+    // Search for the part number
+    if (partDatabase[partNumber]) {
+      // Found! Redirect to the page with part number as URL parameter
+      window.location.href = partDatabase[partNumber].page + '?part=' + encodeURIComponent(partNumber);
+    } else {
+      showError('Part number "' + partNumber + '" not found. Please check and try again.');
+    }
+  }
+  
+  function showError(message) {
+    const errorDiv = document.getElementById('searchError');
+    errorDiv.textContent = message;
+    errorDiv.classList.remove('hidden');
+  }
+  
+  // Allow searching by pressing Enter key
+  document.getElementById('partNumberSearch').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      searchPartNumber();
+    }
+  });
+</script>
 
 </body>
 </html>

@@ -55,5 +55,25 @@
 <footer class="bg-gray-200 text-center py-6 mt-12">
 <p class="text-sm">&copy; 2025 V2X FAA Repair Shop | Madison, MS</p>
 </footer>
+
+<script>
+  // Check if user came from a part number search
+  const urlParams = new URLSearchParams(window.location.search);
+  const partNumber = urlParams.get('part');
+  
+  if (partNumber) {
+    // Display a notification banner at the top of the content
+    const section = document.querySelector('section');
+    const banner = document.createElement('div');
+    banner.className = 'bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded';
+    banner.innerHTML = `
+      <p class="font-bold">✓ Search Result</p>
+      <p>You searched for part number: <strong>${partNumber}</strong></p>
+      <p class="text-sm mt-1">This page contains information about windshield services and repairs.</p>
+    `;
+    section.insertBefore(banner, section.firstChild);
+  }
+</script>
+
 </body>
 </html>
