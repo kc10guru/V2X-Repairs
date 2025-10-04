@@ -34,7 +34,7 @@
         Search
       </button>
     </div>
-    <div id="searchError" class="mt-3 text-red-600 text-center hidden"></div>
+    <div id="searchResult" class="mt-4 p-4 rounded-lg hidden"></div>
   </div>
 </section>
 
@@ -96,60 +96,85 @@
 </footer>
 
 <script>
-  // Database of part numbers and their corresponding pages
-  const partDatabase = {
-    // Windshield parts
-    '101-384025-23': { page: 'windshield.html', name: 'Windshield Assembly - King Air / C12 LH' },
-    '101-384025-24': { page: 'windshield.html', name: 'Windshield Assembly - King Air / C12 RH' },
-    'WS-1003': { page: 'windshield.html', name: 'Windshield Panel - UH-60' },
-    
-    // Landing Gear parts
-    'LG-2001': { page: 'landing-gear.html', name: 'Main Landing Gear - C-130' },
-    'LG-2002': { page: 'landing-gear.html', name: 'Nose Landing Gear - F-16' },
-    'LG-2003': { page: 'landing-gear.html', name: 'Landing Gear Strut Assembly' },
-    
-    // Wheel parts
-    'WH-3001': { page: 'wheels.html', name: 'Main Wheel Assembly' },
-    'WH-3002': { page: 'wheels.html', name: 'Nose Wheel Assembly' },
-    'WH-3003': { page: 'wheels.html', name: 'Wheel Hub Assembly' },
-    
-    // Brake parts
-    'BR-4001': { page: 'brakes.html', name: 'Brake Assembly - C-130' },
-    'BR-4002': { page: 'brakes.html', name: 'Brake Pad Set' },
-    'BR-4003': { page: 'brakes.html', name: 'Brake Disc Assembly' },
-    
-    // Avionics parts
-    'AV-5001': { page: 'avionics.html', name: 'Navigation System' },
-    'AV-5002': { page: 'avionics.html', name: 'Communication Radio' },
-    'AV-5003': { page: 'avionics.html', name: 'Flight Control Unit' }
-  };
+  // Parts database - loaded from JSON file
+  let partsDatabase = {};
+  let databaseLoaded = false;
+
+  // Load the parts database on page load
+  fetch('parts-database.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Could not load parts database');
+      }
+      return response.json();
+    })
+    .then(data => {
+      partsDatabase = data;
+      databaseLoaded = true;
+      console.log('Parts database loaded:', Object.keys(partsDatabase).length, 'parts');
+    })
+    .catch(error => {
+      console.error('Error loading parts database:', error);
+      showResult('Error loading parts database. Please contact our sales team at repairs@gov2x.com', 'error');
+    });
 
   function searchPartNumber() {
     const searchInput = document.getElementById('partNumberSearch');
-    const errorDiv = document.getElementById('searchError');
     const partNumber = searchInput.value.trim().toUpperCase();
     
-    // Clear previous errors
-    errorDiv.classList.add('hidden');
+    // Clear previous results
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.classList.add('hidden');
     
     if (!partNumber) {
-      showError('Please enter a part number');
+      showResult('Please enter a part number', 'error');
+      return;
+    }
+
+    if (!databaseLoaded) {
+      showResult('Parts database is still loading. Please try again in a moment.', 'warning');
       return;
     }
     
-    // Search for the part number
-    if (partDatabase[partNumber]) {
-      // Found! Redirect to the page with part number as URL parameter
-      window.location.href = partDatabase[partNumber].page + '?part=' + encodeURIComponent(partNumber);
+    // Search for the part number (case-insensitive)
+    const foundPart = Object.keys(partsDatabase).find(
+      key => key.toUpperCase() === partNumber
+    );
+    
+    if (foundPart) {
+      const partDescription = partsDatabase[foundPart];
+      showResult(
+        `<div class="text-center">
+          <div class="text-xl font-bold text-green-700 mb-2">✓ Part Found!</div>
+          <div class="mb-2"><strong>Part Number:</strong> ${foundPart}</div>
+          <div class="mb-4"><strong>Description:</strong> ${partDescription}</div>
+          <div class="text-lg">
+            Please contact our sales team at 
+            <a href="mailto:repairs@gov2x.com" class="text-blue-900 font-semibold hover:underline">repairs@gov2x.com</a>
+          </div>
+        </div>`,
+        'success'
+      );
     } else {
-      showError('Part number "' + partNumber + '" not found. Please check and try again.');
+      showResult(
+        `Part number "${partNumber}" not found in our database. Please verify the part number or contact our sales team at <a href="mailto:repairs@gov2x.com" class="text-blue-900 font-semibold hover:underline">repairs@gov2x.com</a> for assistance.`,
+        'error'
+      );
     }
   }
   
-  function showError(message) {
-    const errorDiv = document.getElementById('searchError');
-    errorDiv.textContent = message;
-    errorDiv.classList.remove('hidden');
+  function showResult(message, type) {
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.innerHTML = message;
+    resultDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800');
+    
+    if (type === 'success') {
+      resultDiv.classList.add('bg-green-100', 'text-green-800');
+    } else if (type === 'error') {
+      resultDiv.classList.add('bg-red-100', 'text-red-700');
+    } else if (type === 'warning') {
+      resultDiv.classList.add('bg-yellow-100', 'text-yellow-800');
+    }
   }
   
   // Allow searching by pressing Enter key
