@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parts Search - V2X FAA Repair Stations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<!-- Header Banner -->
+<header class="bg-blue-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto flex items-center justify-center">
+    <img src="V2X-color-logo.jpg" alt="V2X Logo" class="w-48 h-auto mr-6">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold">V2X FAA Repair Stations</h1>
+      <p class="mt-2 text-lg">Parts Search & Identification</p>
+    </div>
+  </div>
+</header>
+
+<!-- Search Section -->
+<section class="bg-white py-8 shadow-md">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center mb-4">Search Aircraft Parts</h2>
+    <p class="text-center text-gray-600 mb-6">Enter a part number to view details and images</p>
+    
+    <div class="flex items-center gap-4">
+      <input 
+        type="text" 
+        id="partNumberSearch" 
+        placeholder="Enter part number (e.g., 50-820197-604)" 
+        class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-900"
+      >
+      <button 
+        onclick="searchPartNumber()" 
+        class="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+      >
+        Search
+      </button>
+    </div>
+
+    <!-- Return Home Button -->
+    <div class="text-center mt-6">
+      <a href="index.html" class="inline-block bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition">
+        ← Return to Home
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results Section -->
+<section class="max-w-4xl mx-auto py-12 px-6">
+  <div id="searchResult" class="hidden"></div>
+</section>
+
+<!-- Bottom Banner -->
+<section class="bg-blue-900 text-white py-12 text-center">
+  <h3 class="text-3xl font-semibold mb-4">Request a Quote</h3>
+  <p class="mb-6">For additional details or to receive a quote, please contact us.</p>
+  <a href="mailto:repairs@gov2x.com" class="bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold shadow hover:bg-gray-200">Email repairs@gov2x.com</a>
+</section>
+
+<footer class="bg-gray-200 text-center py-6 mt-12">
+  <p class="text-sm">&copy; 2025 V2X FAA Repair Stations | Nationwide Service</p>
+</footer>
+
+<script>
+  // Parts database - loaded from JSON file
+  let partsDatabase = {};
+  let databaseLoaded = false;
+
+  // Load the parts database on page load
+  fetch('parts-database.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Could not load parts database');
+      }
+      return response.json();
+    })
+    .then(data => {
+      partsDatabase = data;
+      databaseLoaded = true;
+      console.log('Parts database loaded:', Object.keys(partsDatabase).length, 'parts');
+    })
+    .catch(error => {
+      console.error('Error loading parts database:', error);
+    });
+
+  function searchPartNumber() {
+    const searchInput = document.getElementById('partNumberSearch');
+    const partNumber = searchInput.value.trim();
+    
+    // Clear previous results
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.classList.add('hidden');
+    
+    if (!partNumber) {
+      showError('Please enter a part number');
+      return;
+    }
+
+    if (!databaseLoaded) {
+      showError('Parts database is still loading. Please try again in a moment.');
+      return;
+    }
+    
+    // Search for the part number (case-insensitive)
+    const foundPart = Object.keys(partsDatabase).find(
+      key => key.toUpperCase() === partNumber.toUpperCase()
+    );
+    
+    if (foundPart) {
+      const partDescription = partsDatabase[foundPart];
+      showSuccess(foundPart, partDescription);
+    } else {
+      showNotFound(partNumber);
+    }
+  }
+  
+  function showSuccess(partNumber, description) {
+    const resultDiv = document.getElementById('searchResult');
+    const imagePath = `parts-images/${partNumber}.jpg`;
+    
+    // Debug: Log the image path
+    console.log('Looking for image at:', imagePath);
+    
+    // Create the result display with image
+    resultDiv.innerHTML = `
+      <div class="bg-white rounded-2xl shadow-xl p-8 border-4 border-green-500">
+        <div class="text-center mb-6">
+          <div class="inline-block bg-green-500 text-white px-6 py-3 rounded-full text-2xl font-bold mb-4">
+            ✓ Part Found!
+          </div>
+        </div>
+        
+        <!-- Part Image -->
+        <div class="mb-6 text-center">
+          <img 
+            id="partImage" 
+            src="${imagePath}" 
+            alt="${partNumber}" 
+            class="max-w-full h-auto mx-auto rounded-lg shadow-lg"
+            style="max-height: 400px;"
+            onerror="handleImageError()"
+          >
+          <div id="noImageMessage" class="hidden bg-gray-100 p-8 rounded-lg">
+            <svg class="w-24 h-24 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <p class="text-gray-600 font-semibold">Image not available for this part</p>
+          </div>
+        </div>
+        
+        <!-- Part Details -->
+        <div class="bg-blue-50 p-6 rounded-lg mb-6">
+          <div class="mb-4">
+            <span class="text-gray-600 font-semibold">Part Number:</span>
+            <span class="text-xl font-bold text-blue-900 ml-2">${partNumber}</span>
+          </div>
+          <div>
+            <span class="text-gray-600 font-semibold">Description:</span>
+            <span class="text-lg ml-2">${description}</span>
+          </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-6 rounded-lg text-center">
+          <h3 class="text-2xl font-bold mb-3">Interested in this part?</h3>
+          <p class="mb-4 text-lg">Contact our sales team for availability and pricing</p>
+          <a 
+            href="mailto:repairs@gov2x.com?subject=Inquiry for Part ${partNumber}&body=I am interested in the following part:%0D%0A%0D%0APart Number: ${partNumber}%0D%0ADescription: ${description}%0D%0A%0D%0APlease provide availability and pricing information." 
+            class="inline-block bg-white text-blue-900 px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition"
+          >
+            📧 Email repairs@gov2x.com
+          </a>
+        </div>
+        
+        <!-- Search Again Button -->
+        <div class="text-center mt-6">
+          <button 
+            onclick="resetSearch()" 
+            class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition"
+          >
+            Search Another Part
+          </button>
+        </div>
+      </div>
+    `;
+    
+    resultDiv.classList.remove('hidden');
+    
+    // Scroll to results
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  
+  function handleImageError() {
+    console.log('Image failed to load - showing placeholder');
+    const imgElement = document.getElementById('partImage');
+    if (imgElement) {
+      console.log('Image src was:', imgElement.src);
+      imgElement.classList.add('hidden');
+    }
+    const noImageMsg = document.getElementById('noImageMessage');
+    if (noImageMsg) {
+      noImageMsg.classList.remove('hidden');
+    }
+  }
+  
+  function showNotFound(partNumber) {
+    const resultDiv = document.getElementById('searchResult');
+    
+    resultDiv.innerHTML = `
+      <div class="bg-white rounded-2xl shadow-xl p-8 border-4 border-red-500">
+        <div class="text-center mb-6">
+          <div class="inline-block bg-red-500 text-white px-6 py-3 rounded-full text-2xl font-bold mb-4">
+            ✗ Part Not Found
+          </div>
+        </div>
+        
+        <div class="bg-red-50 p-6 rounded-lg mb-6 text-center">
+          <p class="text-lg mb-2">Part number <strong>"${partNumber}"</strong> was not found in our database.</p>
+          <p class="text-gray-600">Please verify the part number and try again.</p>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-6 rounded-lg text-center">
+          <h3 class="text-2xl font-bold mb-3">Need assistance?</h3>
+          <p class="mb-4 text-lg">Our team can help you find the right part</p>
+          <a 
+            href="mailto:repairs@gov2x.com?subject=Part Search Assistance: ${partNumber}&body=I am looking for the following part:%0D%0A%0D%0APart Number: ${partNumber}%0D%0A%0D%0APlease help me locate this part or suggest alternatives." 
+            class="inline-block bg-white text-blue-900 px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition"
+          >
+            📧 Email repairs@gov2x.com
+          </a>
+        </div>
+        
+        <!-- Search Again Button -->
+        <div class="text-center mt-6">
+          <button 
+            onclick="resetSearch()" 
+            class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition"
+          >
+            Search Another Part
+          </button>
+        </div>
+      </div>
+    `;
+    
+    resultDiv.classList.remove('hidden');
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  
+  function showError(message) {
+    const resultDiv = document.getElementById('searchResult');
+    
+    resultDiv.innerHTML = `
+      <div class="bg-yellow-100 border-2 border-yellow-500 text-yellow-800 p-6 rounded-lg text-center">
+        <p class="text-lg font-semibold">${message}</p>
+      </div>
+    `;
+    
+    resultDiv.classList.remove('hidden');
+  }
+  
+  function resetSearch() {
+    document.getElementById('partNumberSearch').value = '';
+    document.getElementById('searchResult').classList.add('hidden');
+    document.getElementById('partNumberSearch').focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  // Allow searching by pressing Enter key
+  document.getElementById('partNumberSearch').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      searchPartNumber();
+    }
+  });
+  
+  // Auto-search if part number is in URL
+  window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const partNumber = urlParams.get('part');
+    
+    if (partNumber) {
+      // Part number from URL - populate and search
+      document.getElementById('partNumberSearch').value = partNumber;
+      // Wait a moment for database to load, then search
+      setTimeout(function() {
+        searchPartNumber();
+      }, 500);
+    } else {
+      // No part number - just focus the input
+      document.getElementById('partNumberSearch').focus();
+    }
+  });
+</script>
+
+</body>
+</html>
+

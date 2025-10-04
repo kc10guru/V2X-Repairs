@@ -120,47 +120,15 @@
 
   function searchPartNumber() {
     const searchInput = document.getElementById('partNumberSearch');
-    const partNumber = searchInput.value.trim().toUpperCase();
-    
-    // Clear previous results
-    const resultDiv = document.getElementById('searchResult');
-    resultDiv.classList.add('hidden');
+    const partNumber = searchInput.value.trim();
     
     if (!partNumber) {
-      showResult('Please enter a part number', 'error');
-      return;
-    }
-
-    if (!databaseLoaded) {
-      showResult('Parts database is still loading. Please try again in a moment.', 'warning');
+      alert('Please enter a part number');
       return;
     }
     
-    // Search for the part number (case-insensitive)
-    const foundPart = Object.keys(partsDatabase).find(
-      key => key.toUpperCase() === partNumber
-    );
-    
-    if (foundPart) {
-      const partDescription = partsDatabase[foundPart];
-      showResult(
-        `<div class="text-center">
-          <div class="text-xl font-bold text-green-700 mb-2">✓ Part Found!</div>
-          <div class="mb-2"><strong>Part Number:</strong> ${foundPart}</div>
-          <div class="mb-4"><strong>Description:</strong> ${partDescription}</div>
-          <div class="text-lg">
-            Please contact our sales team at 
-            <a href="mailto:repairs@gov2x.com" class="text-blue-900 font-semibold hover:underline">repairs@gov2x.com</a>
-          </div>
-        </div>`,
-        'success'
-      );
-    } else {
-      showResult(
-        `Part number "${partNumber}" not found in our database. Please verify the part number or contact our sales team at <a href="mailto:repairs@gov2x.com" class="text-blue-900 font-semibold hover:underline">repairs@gov2x.com</a> for assistance.`,
-        'error'
-      );
-    }
+    // Redirect to parts-search.html with the part number
+    window.location.href = `parts-search.html?part=${encodeURIComponent(partNumber)}`;
   }
   
   function showResult(message, type) {
