@@ -66,7 +66,7 @@
 
 <script>
   // Parts database - loaded from JSON file
-  let partsDatabase = {};
+  let partsDatabase = [];
   let databaseLoaded = false;
 
   // Load the parts database on page load
@@ -80,7 +80,7 @@
     .then(data => {
       partsDatabase = data;
       databaseLoaded = true;
-      console.log('Parts database loaded:', Object.keys(partsDatabase).length, 'parts');
+      console.log('Parts database loaded:', partsDatabase.length, 'parts');
     })
     .catch(error => {
       console.error('Error loading parts database:', error);
@@ -105,24 +105,41 @@
     }
     
     // Search for the part number (case-insensitive)
-    const foundPart = Object.keys(partsDatabase).find(
-      key => key.toUpperCase() === partNumber.toUpperCase()
+    const foundPart = partsDatabase.find(
+      part => part.partNumber.toUpperCase() === partNumber.toUpperCase()
     );
     
     if (foundPart) {
-      const partDescription = partsDatabase[foundPart];
-      showSuccess(foundPart, partDescription);
+      showSuccess(foundPart);
     } else {
       showNotFound(partNumber);
     }
   }
   
-  function showSuccess(partNumber, description) {
+  function showSuccess(part) {
     const resultDiv = document.getElementById('searchResult');
-    const imagePath = `parts-images/${partNumber}.jpg`;
+    const imagePath = `parts-images/${part.partNumber}.jpg`;
     
     // Debug: Log the image path
     console.log('Looking for image at:', imagePath);
+    
+    // Get location link and display name
+    const locationInfo = getLocationInfo(part.location);
+    
+    // Create limitations section if present
+    const limitationsHtml = part.limitations ? `
+      <div class="bg-yellow-50 border-2 border-yellow-400 p-4 rounded-lg mb-6">
+        <div class="flex items-start">
+          <svg class="w-6 h-6 text-yellow-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+          <div>
+            <h4 class="text-yellow-800 font-bold mb-1">Repair Limitations</h4>
+            <p class="text-yellow-800">${part.limitations}</p>
+          </div>
+        </div>
+      </div>
+    ` : '';
     
     // Create the result display with image
     resultDiv.innerHTML = `
@@ -138,7 +155,7 @@
           <img 
             id="partImage" 
             src="${imagePath}" 
-            alt="${partNumber}" 
+            alt="${part.partNumber}" 
             class="max-w-full h-auto mx-auto rounded-lg shadow-lg"
             style="max-height: 400px;"
             onerror="handleImageError()"
@@ -155,20 +172,26 @@
         <div class="bg-blue-50 p-6 rounded-lg mb-6">
           <div class="mb-4">
             <span class="text-gray-600 font-semibold">Part Number:</span>
-            <span class="text-xl font-bold text-blue-900 ml-2">${partNumber}</span>
+            <span class="text-xl font-bold text-blue-900 ml-2">${part.partNumber}</span>
+          </div>
+          <div class="mb-4">
+            <span class="text-gray-600 font-semibold">Description:</span>
+            <span class="text-lg ml-2">${part.description}</span>
           </div>
           <div>
-            <span class="text-gray-600 font-semibold">Description:</span>
-            <span class="text-lg ml-2">${description}</span>
+            <span class="text-gray-600 font-semibold">Serviced at:</span>
+            <a href="${locationInfo.link}" class="text-lg ml-2 text-blue-900 font-bold hover:underline">${locationInfo.name}</a>
           </div>
         </div>
+        
+        ${limitationsHtml}
         
         <!-- Contact Section -->
         <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-6 rounded-lg text-center">
           <h3 class="text-2xl font-bold mb-3">Interested in this part?</h3>
           <p class="mb-4 text-lg">Contact our sales team for availability and pricing</p>
           <a 
-            href="mailto:repairs@gov2x.com?subject=Inquiry for Part ${partNumber}&body=I am interested in the following part:%0D%0A%0D%0APart Number: ${partNumber}%0D%0ADescription: ${description}%0D%0A%0D%0APlease provide availability and pricing information." 
+            href="mailto:repairs@gov2x.com?subject=Inquiry for Part ${part.partNumber}&body=I am interested in the following part:%0D%0A%0D%0APart Number: ${part.partNumber}%0D%0ADescription: ${part.description}%0D%0ALocation: ${locationInfo.name}%0D%0A%0D%0APlease provide availability and pricing information." 
             class="inline-block bg-white text-blue-900 px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition"
           >
             📧 Email repairs@gov2x.com
@@ -191,6 +214,16 @@
     
     // Scroll to results
     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  
+  function getLocationInfo(location) {
+    const locations = {
+      'Madison': { name: 'Madison, Mississippi', link: 'madison.html' },
+      'San Angelo': { name: 'San Angelo, Texas', link: 'san-angelo.html' },
+      'Crestview': { name: 'Crestview, Florida', link: 'crestview.html' }
+    };
+    
+    return locations[location] || { name: location, link: '#' };
   }
   
   function handleImageError() {

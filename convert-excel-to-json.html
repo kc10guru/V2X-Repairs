@@ -13,13 +13,22 @@
     <div class="mb-6">
       <h2 class="text-xl font-semibold mb-3">Instructions:</h2>
       <ol class="list-decimal ml-6 space-y-2 text-gray-700">
-        <li>Open your Excel file <strong>IW39 3OCT2025 for Jeff.xlsx</strong></li>
+        <li>Open your Excel file (or CSV file) with these columns: <strong>Material, Material Description, Location, Limitations</strong></li>
         <li>Save it as CSV: File → Save As → CSV (Comma delimited)</li>
         <li>Upload the CSV file below</li>
         <li>Click "Convert to JSON"</li>
         <li>Download the generated <strong>parts-database.json</strong> file</li>
         <li>Place it in your V2X-Repairs folder</li>
       </ol>
+      <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+        <p class="text-sm text-gray-700"><strong>Note:</strong> The CSV should have 4 columns:</p>
+        <ul class="list-disc ml-6 text-sm text-gray-700">
+          <li><strong>Material</strong> - The part number</li>
+          <li><strong>Material Description</strong> - Description of the part</li>
+          <li><strong>Location</strong> - Madison, San Angelo, or Crestview</li>
+          <li><strong>Limitations</strong> - Any repair limitations (can be empty)</li>
+        </ul>
+      </div>
     </div>
 
     <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 mb-4 text-center">
@@ -81,22 +90,32 @@
           // Find the columns (case-insensitive)
           const materialIndex = headers.findIndex(h => h.toLowerCase() === 'material');
           const descIndex = headers.findIndex(h => h.toLowerCase().includes('description'));
+          const locationIndex = headers.findIndex(h => h.toLowerCase() === 'location');
+          const limitationsIndex = headers.findIndex(h => h.toLowerCase().includes('limitation'));
           
           if (materialIndex === -1 || descIndex === -1) {
             showError('Could not find "Material" or "Material Description" columns. Headers found: ' + headers.join(', '));
             return;
           }
 
-          // Convert to JSON object
-          const partsData = {};
+          // Convert to JSON array of objects
+          const partsData = [];
           for (let i = 1; i < lines.length; i++) {
             const values = parseCSVLine(lines[i]);
             if (values.length > Math.max(materialIndex, descIndex)) {
               const partNumber = values[materialIndex].trim();
               const description = values[descIndex].trim();
+              const location = locationIndex !== -1 && values[locationIndex] ? values[locationIndex].trim() : '';
+              const limitations = limitationsIndex !== -1 && values[limitationsIndex] ? values[limitationsIndex].trim() : '';
               
               if (partNumber && description) {
-                partsData[partNumber] = description;
+                const part = {
+                  partNumber: partNumber,
+                  description: description,
+                  location: location,
+                  limitations: limitations
+                };
+                partsData.push(part);
               }
             }
           }
@@ -108,7 +127,7 @@
           document.getElementById('output').classList.remove('hidden');
           document.getElementById('error').classList.add('hidden');
           
-          console.log('Converted', Object.keys(partsData).length, 'parts');
+          console.log('Converted', partsData.length, 'parts');
           
         } catch (error) {
           showError('Error parsing CSV: ' + error.message);
@@ -165,4 +184,5 @@
   </script>
 </body>
 </html>
+
 

@@ -1,0 +1,107 @@
+Airfield and Hangar Information
+* Our Modification and Maintenance Center is a 12,000 sq. ft. modern facility, constructed in 2006, located in San Angelo, TX (SJT). 
+* Additional 12,000 sq. ft. hangar leased, used for overflow and modifications.
+* Vertex Modification and Maintenance Center is a Part 145 FAA Certified Repair Station. 
+* San Angelo weather allows for 340 VFR flying days and maintains three certified GPS runways, the longest over 9000 feet. 
+* The airfield maintains 24/7 fire and security departments.
+* https://aviationweather.gov/data/metar/?decoded=1&ids=KSJT&hours=24
+* https://www.aopa.org/destinations/airports/KSJT/details
+
+Operational Support
+* Flight Operations
+*  Ferry flights, FCF, and AOG Repairs
+* OEM
+* TEXTRON, Accomplished STC installations
+*  Field Support TDY’s
+*  FAR 91.411 & 413, Part 43 app E & F 
+* 24 Month ADC and Transponder recertification's
+* Sheet metal repairs
+* Avionics troubleshooting & repair
+
+
+
+
+
+Modification History
+* 28 EFIS Glass Cockpit Modifications
+* USAF C-12C, C-12D, C-12F, and C-12J (1900)
+* 20 EFIS Glass Cockpit Modifications
+* USN UC-12F and UC-12M
+* 25 GNS/XLS FMS Modifications
+* USN TC-12B
+* 43 ELT 406 MHz ELT Installations
+* USN TC-12B and UC-12B
+* 56 ADS-B Out upgrades by Jan 1, 2020
+* 7 Defensive systems (AN/AAR-57) Installations/Upgrades
+* 7 Aural Tone Warning
+* 20 WAAS LPV
+* 22 RVSM
+* 22 SATCOM / 7 SAT Phone
+* 24 Raisbeck EPIC Modifications
+* 14 Centex Saddle Tank Installations
+
+
+Current Modifications
+* BV-08 Warning Tone Inhibit, Mission Gear
+* HF Replacement Service Instruction (AF)
+* C-12J 2nd outlet for Spectrum Aeromed bed
+* I-Pad Mounts and USB Charging ports
+* EOS RF cabling and antenna installation
+* NCU upgraded SCN for UTC error
+* T2CAS memory upgrade
+* RVSM STC amended to include all AF C-12’s
+* BL-77 and BL-78 RVSM Installation completed
+* ADS-B Out SI Completed on the following aircraft:
+* 27 AF C-12’s, and 16 Navy C-12’s
+* HF Replacement STC (Navy)
+* ADS-B Out STC for A200/A200CT Issued
+* ADS-B Out STC for B200/B200C Issued
+* ADS-B Out STC for B300C Issued
+* R-134 Conversion
+* B300C Increased Gross Weight
+* LED Lighting (Glareshield and Cabin)
+* Night Vision
+* U/VHF Radio Replacement in UC-12W
+* BV-08 Mission Power upgrade, 2 each 400A Generators, and Alternator/Generator on LH Engine
+* Radio Altimeter replacement on USAF C-12’s
+
+
+
+   STC Installations
+* SA00005MC-D  Universal Glass Cockpit w/ADS-B Out
+*  SA00078MC Defensive Systems Upgrade 
+*  SA00098MC ProLine 21 Engine Exceedance Warning
+*  SA00122MC ProLine 21 WAAS/LPV
+*  SA00114MC Third Dispenser CMWS
+*  SA00148MC SAT Phone
+*  SA00166MC ADS-B Out
+*  SA00164MC MOOG LCD Indicators
+*  SA00182MC HF Radio Replacement
+*  SA00185MC U/VHF Radio Replacement (ARC-210)
+*  SA00193MC Mission Power (400A Gens’ & Alternator)
+*  SA 00206MC Radio Altimeter Replacement (ALT-4000)
+
+Dealerships: Collins Aerospace, Raisbeck and Centex
+
+
+
+Airframe Repairs
+* Removed and replaced entire left Hand outboard wing leading edge skin due to corrosion found under deice boot.
+* Replaced aft lower spar cap
+* Repair Nacelle Keel cracks on Aircraft. Entire inboard Nacelle skin removal required for repair access.
+* Remove and replaced heated inlet duct assemblies
+* Empennage inspection panels (Fabricated and Installed)
+* Leading edge replacement
+* Keel replacement
+* RDO repair (belly skin)
+
+
+
+Aircraft Condition Inspection (ACI)
+* Full Strip and Paint Capability (Sub-contracted to Ranger Aviation)
+* Interior refurbishment or replacement
+* USAF & USN C-12 Aircraft – All Models (Beechcraft King Air)
+* USAF T-1A Structural Repairs (Beechjet /Hawker 400A)
+* USN C-26 Structural Repairs (Fairchild Swearingen SA227 Series)
+
+
