@@ -1,0 +1,20 @@
+Major MMRO Programs
+
+Fixed Wing - Maintenance, Repair and Overhaul (MRO)
+C/KC-130J Large Aircraft Infrared Countermeasures (LAIRCM)
+C-130 UDLM/Isochronal Inspections/TCTO
+C-130H Lightening Pod Pylon Mount
+AC-130U 30MM Gunship Conversion
+AC-130U Fire Control System Modification
+MC-130H Combined Altitude Radar Altimeter
+L-100 Outer Wing Skin Replacement & B Check
+C-130 Cockpit Upgrades
+C-130 Center Wing Box Repair/Replace
+C-130 Fuselage Trainer Conversions
+C-130 Fire Fighting Modifications
+
+Rotary Wing - Maintenance, Repair and Overhaul (MRO)
+US Navy TH-57 Training Aircraft
+CH-53 Sea Stallion
+H-60 Black Hawk
+H-1 Huey

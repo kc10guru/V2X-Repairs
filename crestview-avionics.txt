@@ -1,0 +1,16 @@
+KC-130J 8.1 Block Upgrade modernizes the aircraft’s avionics, navigation, communication, and survivability systems to meet current operational and regulatory standards.
+
+New Flight Management System (FMS): Complies with Communications, Navigation, Surveillance/Air Traffic Management (CNS/ATM) mandates, enabling global airspace access.
+
+Enhanced GPS Capabilities: Improves positional accuracy and resilience in GPS-contested environments.
+
+Updated Cockpit Displays and Interfaces: Provides pilots with modernized, more intuitive controls and situational awareness.
+
+Upgraded Radios and Data Links: Supports secure voice and data communications, including Link 16 and other tactical networks.
+
+Improved Interoperability: Ensures compatibility with joint and coalition forces during multinational operations.
+
+Survivability and Self-Protection
+
+AN/AAQ-24 DoN LAIRCM Integration: Adds the Department of the Navy’s Large Aircraft Infrared Countermeasures system to protect against infrared-guided missile threats.
+Obsolescence Mitigation: Replaces aging components to extend aircraft service life and reduce maintenance burden.
