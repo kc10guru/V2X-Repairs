@@ -80,6 +80,30 @@
   </div>
 </section>
 
+<!-- Parts Search Section -->
+<section class="max-w-6xl mx-auto py-12 px-6">
+  <div class="bg-blue-50 rounded-xl shadow-lg p-8">
+    <h3 class="text-3xl font-semibold mb-4 text-center text-blue-900">Search Crestview Parts</h3>
+    <p class="text-center text-gray-700 mb-6">Search our database of Crestview facility parts and capabilities</p>
+    <div class="max-w-2xl mx-auto">
+      <div class="flex items-center gap-4">
+        <input 
+          type="text" 
+          id="crestviewPartSearch" 
+          placeholder="Enter part number (e.g., P17500-001)" 
+          class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-900"
+        >
+        <button 
+          onclick="searchCrestviewPart()" 
+          class="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="max-w-6xl mx-auto py-12 px-6 text-center">
   <h3 class="text-3xl font-semibold mb-6">Our Specialized Services</h3>
   <p class="mb-8">Crestview specializes in C-130 modifications, helicopter services, and comprehensive aircraft repairs.</p>
@@ -116,6 +140,28 @@
 <footer class="bg-gray-200 text-center py-6 mt-12">
   <p class="text-sm">&copy; 2025 V2X FAA Repair Shop | Crestview, FL</p>
 </footer>
+
+<script>
+  function searchCrestviewPart() {
+    const searchInput = document.getElementById('crestviewPartSearch');
+    const partNumber = searchInput.value.trim();
+    
+    if (!partNumber) {
+      alert('Please enter a part number');
+      return;
+    }
+    
+    // Redirect to crestview-parts-search.html with the part number
+    window.location.href = `crestview-parts-search.html?part=${encodeURIComponent(partNumber)}`;
+  }
+  
+  // Allow searching by pressing Enter key
+  document.getElementById('crestviewPartSearch').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      searchCrestviewPart();
+    }
+  });
+</script>
 
 </body>
 </html>

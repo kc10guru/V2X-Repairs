@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crestview Parts Search - V2X FAA Repair Station</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<header class="bg-blue-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto flex items-center">
+    <!-- Logo on far left -->
+    <img src="V2X-color-logo.jpg" alt="V2X Logo" class="w-48 h-auto mr-6">
+
+    <!-- Wrapper to center title + nav -->
+    <div class="flex-1 text-center">
+      <h1 class="text-2xl font-bold">V2X FAA Repair Shop</h1>
+      <nav class="mt-2 space-x-6">
+        <a href="index.html">Home</a>
+        <a href="crestview.html">Crestview</a>
+        <a href="contact.html">Contact</a>
+        <a href="crestview-capabilities.html">Capabilities</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Search Section -->
+<section class="bg-white py-8 shadow-md">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center mb-4">Search Crestview Aircraft Parts</h2>
+    <p class="text-center text-gray-600 mb-6">Enter a part number to view details</p>
+    
+    <div class="flex items-center gap-4">
+      <input 
+        type="text" 
+        id="partNumberSearch" 
+        placeholder="Enter part number (e.g., P17500-001)" 
+        class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-900"
+      >
+      <button 
+        onclick="searchPartNumber()" 
+        class="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+      >
+        Search
+      </button>
+    </div>
+
+    <!-- Return to Crestview Button -->
+    <div class="text-center mt-6">
+      <a href="crestview.html" class="inline-block bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition">
+        ← Return to Crestview
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results Section -->
+<section class="max-w-4xl mx-auto py-12 px-6">
+  <div id="searchResult" class="hidden"></div>
+</section>
+
+<!-- Bottom Banner -->
+<section class="bg-blue-900 text-white py-12 text-center">
+  <h3 class="text-3xl font-semibold mb-4">Request a Quote</h3>
+  <p class="mb-6">For additional details or to receive a quote, please contact us.</p>
+  <a href="mailto:repairs@gov2x.com" class="bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold shadow hover:bg-gray-200">Email repairs@gov2x.com</a>
+</section>
+
+<footer class="bg-gray-200 text-center py-6 mt-12">
+  <p class="text-sm">&copy; 2025 V2X FAA Repair Shop | Crestview, FL</p>
+</footer>
+
+<script>
+  // Parts database - loaded from JSON file
+  let partsDatabase = [];
+  let databaseLoaded = false;
+
+  // Load the parts database on page load
+  fetch('crestview-parts.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Could not load parts database');
+      }
+      return response.json();
+    })
+    .then(data => {
+      partsDatabase = data;
+      databaseLoaded = true;
+      console.log('Crestview parts database loaded:', partsDatabase.length, 'parts');
+    })
+    .catch(error => {
+      console.error('Error loading parts database:', error);
+    });
+
+  function searchPartNumber() {
+    const searchInput = document.getElementById('partNumberSearch');
+    const partNumber = searchInput.value.trim();
+    
+    // Clear previous results
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.classList.add('hidden');
+    
+    if (!partNumber) {
+      showError('Please enter a part number');
+      return;
+    }
+
+    if (!databaseLoaded) {
+      showError('Parts database is still loading. Please try again in a moment.');
+      return;
+    }
+    
+    // Search for the part number (case-insensitive)
+    const foundPart = partsDatabase.find(
+      part => part.partNumber.toUpperCase() === partNumber.toUpperCase()
+    );
+    
+    if (foundPart) {
+      showSuccess(foundPart);
+    } else {
+      showNotFound(partNumber);
+    }
+  }
+  
+  function showSuccess(part) {
+    const resultDiv = document.getElementById('searchResult');
+    
+    resultDiv.innerHTML = `
+      <div class="bg-white border-2 border-green-500 rounded-lg shadow-lg p-8">
+        <div class="flex items-center justify-center mb-4">
+          <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-center mb-6 text-green-700">Part Found!</h3>
+        
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <div class="grid gap-4">
+            <div>
+              <p class="text-sm text-gray-600 font-semibold mb-1">Part Number</p>
+              <p class="text-lg font-bold text-blue-900">${part.partNumber}</p>
+            </div>
+            
+            <div>
+              <p class="text-sm text-gray-600 font-semibold mb-1">Description</p>
+              <p class="text-lg">${part.description}</p>
+            </div>
+            
+            ${part.location ? `
+            <div>
+              <p class="text-sm text-gray-600 font-semibold mb-1">Location</p>
+              <p class="text-lg">${part.location}</p>
+            </div>
+            ` : ''}
+            
+            ${part.limitations ? `
+            <div>
+              <p class="text-sm text-gray-600 font-semibold mb-1">Limitations</p>
+              <p class="text-lg">${part.limitations}</p>
+            </div>
+            ` : ''}
+          </div>
+        </div>
+        
+        <div class="bg-blue-100 border-l-4 border-blue-900 p-4 mb-6">
+          <p class="text-gray-700">
+            <strong>For pricing and availability information, please contact our Crestview facility:</strong>
+          </p>
+          <div class="mt-3">
+            <a href="mailto:repairs@gov2x.com" class="inline-block bg-blue-900 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition">
+              Email repairs@gov2x.com
+            </a>
+          </div>
+        </div>
+        
+        <!-- Search Again Button -->
+        <div class="text-center mt-6">
+          <button 
+            onclick="resetSearch()" 
+            class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition"
+          >
+            Search Another Part
+          </button>
+        </div>
+      </div>
+    `;
+    
+    resultDiv.classList.remove('hidden');
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  
+  function showNotFound(partNumber) {
+    const resultDiv = document.getElementById('searchResult');
+    
+    resultDiv.innerHTML = `
+      <div class="bg-white border-2 border-yellow-500 rounded-lg shadow-lg p-8">
+        <div class="flex items-center justify-center mb-4">
+          <svg class="w-12 h-12 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-center mb-4 text-yellow-700">Part Not Found</h3>
+        
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <p class="text-center text-gray-700">
+            Part number <strong class="text-blue-900">${partNumber}</strong> was not found in our Crestview database.
+          </p>
+        </div>
+        
+        <div class="bg-blue-100 border-l-4 border-blue-900 p-4 mb-6">
+          <p class="text-gray-700 mb-2">
+            <strong>This doesn't mean we can't help!</strong> We may still be able to service this part.
+          </p>
+          <p class="text-gray-700">
+            Please contact our team for assistance:
+          </p>
+          <div class="mt-3">
+            <a href="mailto:repairs@gov2x.com" class="inline-block bg-blue-900 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition">
+              Email repairs@gov2x.com
+            </a>
+          </div>
+        </div>
+        
+        <!-- Search Again Button -->
+        <div class="text-center mt-6">
+          <button 
+            onclick="resetSearch()" 
+            class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition"
+          >
+            Search Another Part
+          </button>
+        </div>
+      </div>
+    `;
+    
+    resultDiv.classList.remove('hidden');
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  
+  function showError(message) {
+    const resultDiv = document.getElementById('searchResult');
+    
+    resultDiv.innerHTML = `
+      <div class="bg-yellow-100 border-2 border-yellow-500 text-yellow-800 p-6 rounded-lg text-center">
+        <p class="text-lg font-semibold">${message}</p>
+      </div>
+    `;
+    
+    resultDiv.classList.remove('hidden');
+  }
+  
+  function resetSearch() {
+    document.getElementById('partNumberSearch').value = '';
+    document.getElementById('searchResult').classList.add('hidden');
+    document.getElementById('partNumberSearch').focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  // Allow searching by pressing Enter key
+  document.getElementById('partNumberSearch').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      searchPartNumber();
+    }
+  });
+  
+  // Auto-search if part number is in URL
+  window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const partNumber = urlParams.get('part');
+    
+    if (partNumber) {
+      // Part number from URL - populate and search
+      document.getElementById('partNumberSearch').value = partNumber;
+      // Wait a moment for database to load, then search
+      setTimeout(function() {
+        searchPartNumber();
+      }, 500);
+    } else {
+      // No part number - just focus the input
+      document.getElementById('partNumberSearch').focus();
+    }
+  });
+</script>
+
+</body>
+</html>
+

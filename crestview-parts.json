@@ -1,0 +1,1226 @@
+[
+  {
+    "partNumber": "P17500-001",
+    "description": "One-Channel Iridium Satellite Transceiver",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P17500-002",
+    "description": "Two-Channel Iridium Satellite Transceiver",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P17500-003",
+    "description": "Three-Channel Iridium Satellite Transceiver",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16637-400",
+    "description": "Software Key Entitlement, General Datalink over  SBD (ACARS Capable)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16637-401",
+    "description": "Software Key Entitlement, General Datalink over  dedicated LBT (ACARS/FANS Capable)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16637-402",
+    "description": "Software Key Entitlement, Upgrade SBD Datalink  to Dedicated LBT Datalink (ACARS/FANS Capable)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14126",
+    "description": "Configuration Module, ACM",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "015-11203-001",
+    "description": "Iridium Satellite Two-channel Patch Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "015-10306-001",
+    "description": "Iridium Satellite One-channel Patch Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "S67-1575-365",
+    "description": "Iridium Satellite Two-channel Patch Antenna  (FANS Capable)1",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "S67-1575-409",
+    "description": "Iridium Satellite One-channel Patch Antenna  (FANS Capable)1",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16917-001",
+    "description": "Remote Wi-Fi Antenna (2 required)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P20259",
+    "description": "Backshell, EMI, P1",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P20249",
+    "description": "Backshell, EMI, P2, P3 (2 required)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P20258",
+    "description": "Connector, J1",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P20250",
+    "description": "Connector, J2",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P20251",
+    "description": "Connector, J3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P17060-001",
+    "description": "Mounting Tray",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P17060-002",
+    "description": "Mounting Tray w/fan (optional)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P19662",
+    "description": "Mounting Kit, Bulkhead (optional in lieu of trays)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P13167",
+    "description": "Dual Iridium Channel Inmarsat Filter",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "090-11201-002",
+    "description": "Single Iridium Channel Inmarsat Filter",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P13167",
+    "description": "Dual Iridium Channel Inmarsat Filter",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN1007-100",
+    "description": "Data Link Unit (DLU) w/ SBD channeland RS-232 for  AFIS/ ACARS/FANS-1/A interface",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN1011-100",
+    "description": "Iridium Band-Pass Filter",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN1002-100",
+    "description": "Cabin Network Distribution Unit (CNDU)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "910100-00",
+    "description": "SD Stylus Ethernet Handset (without Cradle) Black",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "910100-01",
+    "description": "SD Stylus Ethernet Handset (with Cradle and Remote Cord Reel) Black",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P34110-002",
+    "description": "AVANCE L5 LRU (5 MCU, 2 Aircard)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P34118",
+    "description": "AVANCE L5 Mounting Tray",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14126",
+    "description": "Configuration Module, ACM",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P35500",
+    "description": "ASE 900mhz Dual Directional Antenna (Opt. 1 of 2)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P39095",
+    "description": "Gasket, Dual Directional",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P30200-001",
+    "description": "Antenna, Multiband, 13-inch Blade (Opt. 2 of 2)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P51678",
+    "description": "Gasket, Aircraft Antenna, Multiband, 13-in Blade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16917-001",
+    "description": "Remote Wifi Cabin Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18350-001",
+    "description": "Terrestrial Modem/Wifi Bridge Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14427",
+    "description": "Connector, Circular, Straight, Series I (P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14428",
+    "description": "Connector, Circular, Straight, Series I (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15089",
+    "description": "Backshell, Strain Relief, Circular, Straight, (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12527",
+    "description": "Connector, DA15, Female, EMI Backshell  (mating connector for ACM)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P31834",
+    "description": "Backshell, EMI (P2, P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P19237",
+    "description": "Backshell, EMI (P2, P3) (Optional)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18125",
+    "description": "Connector, 128-Pin, A-Rotation (P2)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-800",
+    "description": "L5 Corp Shuttle Service � up to 99 devices",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P35917",
+    "description": "Gogo Vision � IFE Initial Content Load Flash Drive",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P53874-700",
+    "description": "Gogo Vision+ Premium FlightPath 3D Moving Map",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P49159-002",
+    "description": "Cloudport � Automatically and wirelessly delivers Gogo Vision content/platform software updates",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P24486",
+    "description": "GVPU � Gogo Video Processing Unit  Displays Gogo Vision content on cabin monitors",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P34110-003",
+    "description": "AVANCE L3 LRU (3 MCU, 1 Aircard)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-002",
+    "description": "AVANCE L3 PLUS Service Offering",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-003",
+    "description": "AVANCE L3 MAX Service Offering",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12949",
+    "description": "Omni Directional Air-to-Ground Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P13121",
+    "description": "Gasket, Antenna, Air-to-Ground",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P41234",
+    "description": "Mounting Tray w/Fan",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14126",
+    "description": "Configuration Module, ACM",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16917-001",
+    "description": "Remote Wifi Cabin Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18350-001",
+    "description": "Terrestrial Modem/Wifi Bridge Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14427",
+    "description": "Connector, Circular, Straight, Series I (P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14428",
+    "description": "Connector, Circular, Straight, Series I (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15089",
+    "description": "Backshell, Strain Relief, Circular, Straight, (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12527",
+    "description": "Connector, DA15, Female, EMI Backshell",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P19237",
+    "description": "Backshell, EMI (P2, P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18125",
+    "description": "Connector, 128-Pin, A-Rotation (P2)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "A550024",
+    "description": "Leading Edge/Lightning Strip Protection Kit",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "A550025",
+    "description": "Lightning Diverter Strip Kit",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P35917",
+    "description": "Gogo Vision � IFE Initial Content Load Flash Drive",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P53874-700",
+    "description": "Gogo Vision+ Premium FlightPath 3D Moving Map",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P49159-002",
+    "description": "Cloudport � Automatically & wirelessly delivers  Gogo Vision content/platform software updates",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P24486",
+    "description": "GVPU � Gogo Video Processing Unit  Displays Gogo Vision content on cabin monitors",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-006",
+    "description": "AVANCE L3 PLUS to MAX Service Upgrade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P34110-002",
+    "description": "AVANCE L5 LRU (5 MCU, 2 Aircard)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P42660-001",
+    "description": "Gogo X3 LRU",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P34118",
+    "description": "AVANCE L5 Mounting Tray",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P41234",
+    "description": "Mounting Tray, 3MCU w/Cooling Fans, Gogo L3/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14126",
+    "description": "Configuration Module, ACM",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P30200-001",
+    "description": "Aircraft Antenna, Multiband, 13-inch Blade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P51678",
+    "description": "Gasket, Aircraft Antenna, Multiband, 13-in Blade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16917-001",
+    "description": "Remote Wifi Cabin Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14427",
+    "description": "Connector, Circular, Straight, Series I (P3) L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14428",
+    "description": "Connector, Circular, Straight, Series I (P1) L5/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P43190",
+    "description": "Connector, Circular MIL Spec male 37-pin Series (P2)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18125",
+    "description": "Connector, 128-Pin, A-Rotation (P2) L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12527",
+    "description": "Connector, DA15, Female, EMI Backshell (ACM)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15089",
+    "description": "Backshell, Strain Relief Circular, Straight (P1) L5/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P31834",
+    "description": "Backshell, EMI (P2, P3) L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P19237",
+    "description": "Backshell, EMI (P2, P3) L5 (Optional)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P43984",
+    "description": "Backshell, EMI/RFI (P2) X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P54702",
+    "description": "Terminator, 50 Ohm, TNC, Male L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P26381",
+    "description": "Terminator, 50 Ohm, TNC, Female L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P42660-001",
+    "description": "Gogo 5G X3 LRU",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P41234",
+    "description": "Mounting Tray, 3MCU w/Cooling Fans, Gogo L3/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P30200-001",
+    "description": "Aircraft Antenna, Multiband, 13-inch Blade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P51678",
+    "description": "Gasket, Aircraft Antenna, Multiband, 13-in Blade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14428",
+    "description": "Connector Circular, Straight, Series I (P1) L5/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P43190",
+    "description": "Connector Circular MIL Spec male 37-pin, Series (P2)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15089",
+    "description": "Backshell, Strain Relief Circular, Straight, (P1) L5/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P43984",
+    "description": "Backshell, EMI/RFI X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P54702",
+    "description": "Terminator, 50 Ohm, TNC, Male L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P26381",
+    "description": "Terminator, 50 Ohm, TNC, Female L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P51600-001",
+    "description": "AVANCE LX5 LRU (5 MCU, 2 Aircard)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P34118",
+    "description": "AVANCE L5 Mounting Tray",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14126",
+    "description": "Configuration Module, ACM",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P30200-001",
+    "description": "Aircraft Antenna, Multiband, 13-inch Blade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P51678",
+    "description": "Gasket, Aircraft Antenna, Multiband, 13-in Blade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16917-001",
+    "description": "Remote Wifi Cabin Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14427",
+    "description": "Connector, Circular, Straight, Series I (P3) L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14428",
+    "description": "Connector, Circular, Straight, Series I (P1) L5/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18125",
+    "description": "Connector, 128-Pin, A-Rotation (P2) L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12527",
+    "description": "Connector, DA15, Female, EMI Backshell (ACM)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15089",
+    "description": "Backshell, Strain Relief Circular, Straight (P1) L5/X3",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P31834",
+    "description": "Backshell, EMI (P2, P3) L5",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P19237",
+    "description": "Backshell, EMI (P2, P3) L5 (Optional)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-800",
+    "description": "L5 Corp Shuttle Service � up to 99 devices",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P35917",
+    "description": "Gogo Vision � IFE Initial Content Load Flash Drive",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P53874-700",
+    "description": "Gogo Vision+ Premium FlightPath 3D Moving Map",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P49159-002",
+    "description": "Cloudport � Automatically & wirelessly delivers  Gogo Vision content/platform software upgrades",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P24486",
+    "description": "GVPU � Gogo Video Processing Unit  Displays Gogo Vision content on cabin monitors",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28950",
+    "description": "Smart Cabin System LRU",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-300",
+    "description": "Smart Cabin System � Elite Service Offering",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-100",
+    "description": "Smart Cabin System � Media Service Offering",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28999-250",
+    "description": "Smart Cabin System � Media to Elite Service  Offering Upgrade",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P28945",
+    "description": "Smart Cabin System Mounting Tray",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18350-001",
+    "description": "Terrestrial Modem Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P16917-001",
+    "description": "Remote Wifi Antenna (order qty 6)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14126",
+    "description": "Configuration Module (ACM)6",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P18125",
+    "description": "Connector, 128 Pin, A-Rotation (P2)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P19237",
+    "description": "Backshell, EMI (P2, P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12527",
+    "description": "Connector, DA15, Female, EMI Backshell  (mating connector for ACM)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14427",
+    "description": "Connector, Circular, Straight, Series I (P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14428",
+    "description": "Connector, Circular, Straight, Series I (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15089",
+    "description": "Backshell, Strain Relief, Circular, Straight (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P35917",
+    "description": "Gogo Vision � IFE Initial Content Load Flash Drive",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P53874-700",
+    "description": "Gogo Vision+ Premium FlightPath 3D Moving Map",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P49159-002",
+    "description": "Cloudport � Automatically & wirelessly delivers  Gogo Vision content/platform software upgrades",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P24486",
+    "description": "GVPU � Gogo Video Processing Unit",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN1021-100",
+    "description": "SDR � 8x Fast & GigEthernet software definable  � WAN/LAN ports � 1x 802.11 b/g/n+ac Wifi Radio (w.4GHz or  � 5GHz) � 1x 3G/4G/LTE Cellular Data Radio � Digital PBX functionality � 1x ISDN Interface � VoIP Telephony via suitable SIP client (e.g.  � AeroV) � 1x 512GB SSD Drive � Customizable Discrete I/O � ARINC 429 Interface",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN-1021-SB-005",
+    "description": "In-Field SDR Upgrade  Cellular 4G LTE WiFi upgrade to 802.11AC Solid State Drive 512GB",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "100-1021-01",
+    "description": "SDR Mating Connector Kit",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "100-20-04",
+    "description": "RP-TNC male - TNC female adapter so     WBA PN 900120 connects to SDR WiFi output",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "100-1021-50",
+    "description": "SDR WiFi Dipole Antenna (AIR802)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "845-00034",
+    "description": "SDR 4G/LTE Dipole",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-IFRTR-900",
+    "description": "CNX to SDR Interface Cable",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "MT1-SDR-900",
+    "description": "CNX to SDR Mounting Plate",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2000-7772",
+    "description": "SDR Gateway8 � 8x Fast & GigEthernet software definable WAN/LAN ports � Dual 802.11 b/g/n+ac WiFi Radios (2.4GHz & / or 5GHz) � 1x 3G/4G/LTE Cellular Data Radio � Dual independent Iridium Voice Channels � Analogue and Digital PBX functionality � 2x FXS / 2x FXO / 2x 4-Wire / 2x ISDN / 2x Serial / CEPT-e1 � VoIP Telephony via suitable SIP client (e.g. AeroV) � 128GB SSD Drive (optional 1TB alternative available) � Customizable Discrete I/O � ARINC 429 Interface",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2000-7782",
+    "description": "SDR Gateway � 8x Fast & GigEthernet software definable WAN/LAN ports � Dual 802.11 b/g/n+ac WiFi Radios (2.4GHz & / or 5GHz) � 1x 3G/4G/LTE Cellular Data Radio � Dual independent Iridium Voice Channels � Analogue and Digital PBX functionality � 4x FXS / 2x 4-Wire / 2x ISDN / 2x Serial / CEPT-e1 � VoIP Telephony via suitable SIP client (e.g. AeroV) � 128GB SSD Drive (optional 1TB alternative available) � Customizable Discrete I/O � ARINC 429 Interface",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2030-008",
+    "description": "256 GB Solid State Drive (SSD)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2030-007",
+    "description": "1TB Solid State Drive (SSD)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2000-IK-001",
+    "description": "SDR Gateway Install Kit � Tray � ARINC 600 connector � Pre-terminated coax cables (TNC/NType) for WiFi, 3G/4G and Iridium coax termination",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2000-IK-002",
+    "description": "SDR Gateway Install Kit � Tray � ARINC 600 connector � ARINC 600 contacts for WiFi, 3G/4G, and Iridium aircraft coax termination",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2301-100",
+    "description": "SDR Gateway Personality Module with SD Dual Iridium and 3G/4G/LTE SIM cards",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900021",
+    "description": "SD LTE Hub",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900023",
+    "description": "SD WiFi Hub 2.0",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "100-1021-73",
+    "description": "Gogo ATG License Key (SD Hubs only)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900110 Single",
+    "description": "Wideband Antenna RP-SMA - Single",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900110 3 pack",
+    "description": "Wideband Antenna RP-SMA � 3 Pack",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900110 6 pack",
+    "description": "Wideband Antenna RP-SMA � 6 Pack",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900120 Single",
+    "description": "Wideband Antenna TNC - Single",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900120 3 pack",
+    "description": "Wideband Antenna TNC � 3 Pack",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "900120 6 pack",
+    "description": "Wideband Antenna TNC � 6 Pack",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2008-200",
+    "description": "MIMO Antenna (TNC interface)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2008-201",
+    "description": "MIMO Antenna (RP-TNC interface)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2008-205",
+    "description": "MIMO Antenna (RP-SMA interface)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "TN2008-305",
+    "description": "MIMO Antenna (RP-SMA interface, 60�  pendant cables)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P30300-001",
+    "description": "Gogo Galileo HDX Antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55348",
+    "description": "HDX Antenna Gasket",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55881",
+    "description": "Connector (J1); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.225� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55936",
+    "description": "Connector (J1); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.150� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55880",
+    "description": "Connector (J2); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.225� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55937",
+    "description": "Connector (J2); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.150� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55975",
+    "description": "Backshell (J1); 90 degree, Series 801, Saddle Clamp",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P56847",
+    "description": "Backshell (J2); 90 degree, Series 801, Saddle Clamp",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P30400-001",
+    "description": "Gogo Galileo FDX antenna",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55814",
+    "description": "FDX Antenna Gasket",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55980",
+    "description": "Connector (J1); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.225� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55981",
+    "description": "Connector (J1); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.150� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55880",
+    "description": "Connector (J2); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.225� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P55937",
+    "description": "Connector (J2); Non-hermetic, Jam-Nut, Rear Panel  Mount, 0.150� thickness",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P56840",
+    "description": "Backshell (J1); 90 degree, Series 801, Saddle Clamp",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P56847",
+    "description": "Backshell (J2); 90 degree, Series 801, Saddle Clamp",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4020-100",
+    "description": "Advanced Tail Mounted Antenna (ATMA)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4010-100",
+    "description": "SD Modem Unit (SMU), AC Version10",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4010-150",
+    "description": "SD Modem Unit (SMU), DC Version",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4020-200",
+    "description": "Advanced Tail Mounted Antenna (ATMA)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4010-200",
+    "description": "SD Modem Unit (SMU), AC Version11",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4010-250",
+    "description": "SD Modem Unit (SMU), DC Version",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4020-300",
+    "description": "Electronically Steered Antenna (ESA)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4010-300",
+    "description": "SD Modem Unit (SMU), AC Version12",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "SD-4010-350",
+    "description": "SD Modem Unit (SMU), DC Version",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P62000-001",
+    "description": "Gogo C1 LRU",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14291",
+    "description": "ATG Mounting Tray",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14291-002",
+    "description": "ATG Mounting Tray",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14290",
+    "description": "Kit, Rails, Flange-Mount, ATG",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12083",
+    "description": "CTR (Cabin Telecommunications Router)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12083-001",
+    "description": "CTR (Cabin Telecommunications Router)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14126",
+    "description": "Configuration Module (ACM)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12949",
+    "description": "Air-to-Ground Antenna, Omni-Directional",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P13121",
+    "description": "Gasket, Antenna, Air-to-Ground",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14427",
+    "description": "Connector, Circular, Straight, Series I (P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15088",
+    "description": "Backshell, Strain Relief, Circular (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14428",
+    "description": "Connector, Circular, Straight, Series I (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P14429",
+    "description": "Connector, Circular, Straight, Series I (P3)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P15089",
+    "description": "Backshell, Strain Relief, Circular, (P1)",
+    "location": "",
+    "limitations": ""
+  },
+  {
+    "partNumber": "P12527",
+    "description": "Connector, DA15, Female (ACM)",
+    "location": "",
+    "limitations": ""
+  }
+]
