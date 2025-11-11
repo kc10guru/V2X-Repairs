@@ -20,6 +20,7 @@
 <section class="bg-white py-8 shadow-md">
   <div class="max-w-4xl mx-auto px-6">
     <h2 class="text-2xl font-bold text-center mb-4">Search by Part Number</h2>
+    <div id="loadingStatus" class="text-center mb-3 text-sm text-gray-600"></div>
     <div class="flex items-center gap-4">
       <input 
         type="text" 
@@ -98,53 +99,194 @@
 </footer>
 
 <script>
-  // Parts database - loaded from JSON file
-  let partsDatabase = {};
-  let databaseLoaded = false;
+  // Parts databases - loaded from JSON files
+  let madisonParts = [];
+  let crestviewParts = [];
+  let madisonLoaded = false;
+  let crestviewLoaded = false;
 
-  // Load the parts database on page load
+  function updateLoadingStatus() {
+    const statusDiv = document.getElementById('loadingStatus');
+    if (madisonLoaded && crestviewLoaded) {
+      statusDiv.innerHTML = '<span class="text-green-600">✓ Ready to search all locations</span>';
+    } else {
+      const loaded = [];
+      if (madisonLoaded) loaded.push('Madison');
+      if (crestviewLoaded) loaded.push('Crestview');
+      statusDiv.innerHTML = `<span class="text-yellow-600">Loading databases... ${loaded.join(', ')} ready</span>`;
+    }
+  }
+
+  // Show initial loading status
+  updateLoadingStatus();
+
+  // Load the Madison parts database
   fetch('parts-database.json')
     .then(response => {
       if (!response.ok) {
-        throw new Error('Could not load parts database');
+        throw new Error('Could not load Madison parts database');
       }
       return response.json();
     })
     .then(data => {
-      partsDatabase = data;
-      databaseLoaded = true;
-      console.log('Parts database loaded:', Object.keys(partsDatabase).length, 'parts');
+      madisonParts = data;
+      madisonLoaded = true;
+      console.log('Madison parts database loaded:', madisonParts.length, 'parts');
+      updateLoadingStatus();
     })
     .catch(error => {
-      console.error('Error loading parts database:', error);
-      showResult('Error loading parts database. Please contact our sales team at repairs@gov2x.com', 'error');
+      console.error('Error loading Madison parts database:', error);
+      updateLoadingStatus();
+    });
+
+  // Load the Crestview parts database
+  fetch('crestview-parts.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Could not load Crestview parts database');
+      }
+      return response.json();
+    })
+    .then(data => {
+      crestviewParts = data;
+      crestviewLoaded = true;
+      console.log('Crestview parts database loaded:', crestviewParts.length, 'parts');
+      updateLoadingStatus();
+    })
+    .catch(error => {
+      console.error('Error loading Crestview parts database:', error);
+      updateLoadingStatus();
     });
 
   function searchPartNumber() {
     const searchInput = document.getElementById('partNumberSearch');
     const partNumber = searchInput.value.trim();
+    const resultDiv = document.getElementById('searchResult');
     
     if (!partNumber) {
       alert('Please enter a part number');
       return;
     }
+
+    if (!madisonLoaded || !crestviewLoaded) {
+      showResult('Parts databases are still loading. Please try again in a moment.', 'warning');
+      return;
+    }
     
-    // Redirect to parts-search.html with the part number
-    window.location.href = `parts-search.html?part=${encodeURIComponent(partNumber)}`;
+    // Search both databases
+    const madisonMatch = madisonParts.find(
+      part => part.partNumber && part.partNumber.toUpperCase() === partNumber.toUpperCase()
+    );
+    
+    const crestviewMatch = crestviewParts.find(
+      part => part.partNumber && part.partNumber.toUpperCase() === partNumber.toUpperCase()
+    );
+    
+    // Display results
+    if (madisonMatch || crestviewMatch) {
+      let resultHTML = '<div class="space-y-4">';
+      
+      if (madisonMatch) {
+        resultHTML += `
+          <div class="bg-green-50 border-2 border-green-500 rounded-lg p-6">
+            <div class="flex items-center mb-3">
+              <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="text-xl font-bold text-green-800">Available at Madison, MS</h3>
+            </div>
+            <div class="bg-white rounded p-4 mb-3">
+              <p class="text-sm text-gray-600 font-semibold mb-1">Part Number</p>
+              <p class="text-lg font-bold text-blue-900 mb-3">${madisonMatch.partNumber}</p>
+              <p class="text-sm text-gray-600 font-semibold mb-1">Description</p>
+              <p class="text-gray-800">${madisonMatch.description || 'N/A'}</p>
+            </div>
+            <div class="bg-blue-50 border-l-4 border-blue-900 p-3">
+              <p class="text-sm font-semibold text-gray-800 mb-2">Contact Madison for pricing and availability:</p>
+              <div class="flex gap-2">
+                <a href="part-order-form.html?part=${encodeURIComponent(madisonMatch.partNumber)}&location=Madison" class="inline-block bg-green-600 text-white px-4 py-2 rounded font-semibold hover:bg-green-700 transition text-sm">
+                  Order Now
+                </a>
+                <a href="mailto:repairs@gov2x.com" class="inline-block bg-blue-900 text-white px-4 py-2 rounded font-semibold hover:bg-blue-800 transition text-sm">
+                  Email Us
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      
+      if (crestviewMatch) {
+        resultHTML += `
+          <div class="bg-green-50 border-2 border-green-500 rounded-lg p-6">
+            <div class="flex items-center mb-3">
+              <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="text-xl font-bold text-green-800">Available at Crestview, FL</h3>
+            </div>
+            <div class="bg-white rounded p-4 mb-3">
+              <p class="text-sm text-gray-600 font-semibold mb-1">Part Number</p>
+              <p class="text-lg font-bold text-blue-900 mb-3">${crestviewMatch.partNumber}</p>
+              <p class="text-sm text-gray-600 font-semibold mb-1">Description</p>
+              <p class="text-gray-800">${crestviewMatch.description || 'N/A'}</p>
+              ${crestviewMatch.location ? `
+                <p class="text-sm text-gray-600 font-semibold mb-1 mt-2">Location</p>
+                <p class="text-gray-800">${crestviewMatch.location}</p>
+              ` : ''}
+              ${crestviewMatch.limitations ? `
+                <p class="text-sm text-gray-600 font-semibold mb-1 mt-2">Limitations</p>
+                <p class="text-gray-800">${crestviewMatch.limitations}</p>
+              ` : ''}
+            </div>
+            <div class="bg-blue-50 border-l-4 border-blue-900 p-3">
+              <p class="text-sm font-semibold text-gray-800 mb-2">Contact Crestview for pricing and availability:</p>
+              <div class="flex gap-2">
+                <a href="part-order-form.html?part=${encodeURIComponent(crestviewMatch.partNumber)}&location=Crestview" class="inline-block bg-green-600 text-white px-4 py-2 rounded font-semibold hover:bg-green-700 transition text-sm">
+                  Order Now
+                </a>
+                <a href="mailto:repairs@gov2x.com" class="inline-block bg-blue-900 text-white px-4 py-2 rounded font-semibold hover:bg-blue-800 transition text-sm">
+                  Email Us
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      
+      resultHTML += '</div>';
+      showResult(resultHTML, 'success');
+    } else {
+      // Not found in either database
+      showResult(`
+        <div class="bg-yellow-50 border-2 border-yellow-500 rounded-lg p-6">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+            <h3 class="text-xl font-bold text-yellow-800">Part Not Found</h3>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Part number <strong class="text-blue-900">${partNumber}</strong> was not found in our Madison or Crestview databases.
+          </p>
+          <div class="bg-blue-50 border-l-4 border-blue-900 p-3">
+            <p class="text-sm text-gray-800 mb-2"><strong>This doesn't mean we can't help!</strong> We may still be able to service this part.</p>
+            <p class="text-sm text-gray-800 mb-3">Please contact our team for assistance:</p>
+            <a href="mailto:repairs@gov2x.com" class="inline-block bg-blue-900 text-white px-4 py-2 rounded font-semibold hover:bg-blue-800 transition text-sm">
+              Email repairs@gov2x.com
+            </a>
+          </div>
+        </div>
+      `, 'warning');
+    }
   }
   
   function showResult(message, type) {
     const resultDiv = document.getElementById('searchResult');
     resultDiv.innerHTML = message;
     resultDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800');
-    
-    if (type === 'success') {
-      resultDiv.classList.add('bg-green-100', 'text-green-800');
-    } else if (type === 'error') {
-      resultDiv.classList.add('bg-red-100', 'text-red-700');
-    } else if (type === 'warning') {
-      resultDiv.classList.add('bg-yellow-100', 'text-yellow-800');
-    }
+    resultDiv.classList.remove('hidden');
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
   
   // Allow searching by pressing Enter key

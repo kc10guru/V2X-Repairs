@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part Order Request - V2X FAA Repair Stations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<header class="bg-blue-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto flex items-center justify-center">
+    <img src="V2X-color-logo.jpg" alt="V2X Logo" class="w-48 h-auto mr-6">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold">V2X FAA Repair Stations</h1>
+      <p class="mt-2 text-lg">Part Order Request</p>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-4xl mx-auto py-12 px-6">
+  <div class="bg-white rounded-lg shadow-lg p-8">
+    
+    <!-- Chat Area -->
+    <div id="chatArea" class="mb-6 space-y-4 min-h-[400px] max-h-[600px] overflow-y-auto p-4 bg-gray-50 rounded-lg">
+      <!-- Messages will appear here -->
+    </div>
+
+    <!-- Input Area -->
+    <div id="inputArea" class="flex gap-3">
+      <input 
+        type="text" 
+        id="userInput" 
+        placeholder="Type your answer here..." 
+        class="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-900"
+        autocomplete="off"
+      >
+      <button 
+        onclick="submitAnswer()" 
+        class="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+      >
+        Send
+      </button>
+    </div>
+
+    <!-- Summary Area (hidden initially) -->
+    <div id="summaryArea" class="hidden mt-8">
+      <h3 class="text-2xl font-bold mb-4 text-blue-900">Order Request Summary</h3>
+      <div id="summaryContent" class="bg-gray-50 rounded-lg p-6 mb-6"></div>
+      
+      <div class="flex gap-4">
+        <button 
+          onclick="submitOrder()" 
+          class="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+        >
+          Submit Order Request
+        </button>
+        <button 
+          onclick="restartForm()" 
+          class="flex-1 bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition"
+        >
+          Start Over
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-blue-900 text-white py-8 text-center">
+  <p class="text-sm">Need help? Email us at <a href="mailto:repairs@gov2x.com" class="underline font-semibold">repairs@gov2x.com</a></p>
+</section>
+
+<footer class="bg-gray-200 text-center py-6">
+  <p class="text-sm">&copy; 2025 V2X FAA Repair Stations | Nationwide Service</p>
+</footer>
+
+<script>
+  const questions = [
+    { id: 'partNumber', text: 'What is the part number you need?', type: 'text' },
+    { id: 'quantity', text: 'How many do you need?', type: 'number' },
+    { id: 'purchaseOrderNumber', text: 'What is your Purchase Order (PO) Number?', type: 'text' },
+    { id: 'companyName', text: 'What is your company name?', type: 'text' },
+    { id: 'contactName', text: 'What is your name?', type: 'text' },
+    { id: 'email', text: 'What is your email address?', type: 'email' },
+    { id: 'phone', text: 'What is your phone number?', type: 'tel' },
+    { id: 'billingAddress', text: 'What is your billing address? (Include street, city, state, and ZIP)', type: 'text' },
+    { id: 'shippingSameAsBilling', text: 'Is the shipping address the same as billing? (Type "yes" or "no")', type: 'text', conditional: true },
+    { id: 'shippingAddress', text: 'What is your shipping address? (Include street, city, state, and ZIP)', type: 'text', skip: true },
+    { id: 'urgency', text: 'How urgent is this request? (Routine, Urgent, or AOG - Aircraft On Ground)', type: 'text' },
+    { id: 'additionalInfo', text: 'Any additional information or special requirements? (Type "none" if not)', type: 'text' }
+  ];
+
+  let currentQuestion = 0;
+  let answers = {};
+
+  // Start the conversation when page loads
+  window.addEventListener('load', function() {
+    // Check for URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const partNumber = urlParams.get('part');
+    const location = urlParams.get('location');
+    
+    if (partNumber && location) {
+      // Pre-fill part number and location from search
+      answers.partNumber = partNumber;
+      answers.location = location;
+      addBotMessage(`Hello! I see you're interested in ordering part number <strong>${partNumber}</strong> from our <strong>${location}</strong> location.`);
+      addBotMessage("Let's complete the order request. I'll ask you a few questions.");
+      // Skip the part number question since we have it
+      currentQuestion = 1;
+      setTimeout(() => askQuestion(), 1500);
+    } else {
+      addBotMessage("Hello! I'll help you submit a part order request. Let's get started!");
+      setTimeout(() => askQuestion(), 1000);
+    }
+  });
+
+  function askQuestion() {
+    if (currentQuestion < questions.length) {
+      const question = questions[currentQuestion];
+      addBotMessage(question.text);
+      document.getElementById('userInput').type = question.type;
+      document.getElementById('userInput').focus();
+    } else {
+      showSummary();
+    }
+  }
+
+  function addBotMessage(text) {
+    const chatArea = document.getElementById('chatArea');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'flex items-start gap-3';
+    messageDiv.innerHTML = `
+      <div class="bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+        V
+      </div>
+      <div class="bg-white rounded-lg px-4 py-3 shadow max-w-[80%]">
+        <p class="text-gray-800">${text}</p>
+      </div>
+    `;
+    chatArea.appendChild(messageDiv);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function addUserMessage(text) {
+    const chatArea = document.getElementById('chatArea');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'flex items-start gap-3 justify-end';
+    messageDiv.innerHTML = `
+      <div class="bg-blue-100 rounded-lg px-4 py-3 shadow max-w-[80%]">
+        <p class="text-gray-800">${text}</p>
+      </div>
+      <div class="bg-gray-400 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+        U
+      </div>
+    `;
+    chatArea.appendChild(messageDiv);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function submitAnswer() {
+    const input = document.getElementById('userInput');
+    const answer = input.value.trim();
+    
+    if (!answer) {
+      return;
+    }
+
+    // Add user's answer to chat
+    addUserMessage(answer);
+    
+    // Save the answer
+    const question = questions[currentQuestion];
+    answers[question.id] = answer;
+    
+    // Clear input
+    input.value = '';
+    
+    // Handle conditional logic for shipping address
+    if (question.id === 'shippingSameAsBilling') {
+      const answerLower = answer.toLowerCase();
+      if (answerLower === 'yes' || answerLower === 'y') {
+        // Skip shipping address question
+        answers.shippingAddress = 'Same as billing address';
+        currentQuestion += 2; // Skip the shipping address question
+      } else {
+        // Ask for shipping address
+        currentQuestion++;
+      }
+    } else {
+      // Move to next question normally
+      currentQuestion++;
+    }
+    
+    // Small delay before asking next question
+    setTimeout(() => askQuestion(), 500);
+  }
+
+  function showSummary() {
+    document.getElementById('inputArea').classList.add('hidden');
+    document.getElementById('summaryArea').classList.remove('hidden');
+    
+    addBotMessage("Perfect! Here's a summary of your order request. Please review and submit.");
+    
+    const summaryContent = document.getElementById('summaryContent');
+    summaryContent.innerHTML = `
+      <div class="space-y-3">
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Part Number</p>
+          <p class="text-lg">${answers.partNumber}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Quantity</p>
+          <p class="text-lg">${answers.quantity}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Purchase Order Number</p>
+          <p class="text-lg">${answers.purchaseOrderNumber}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Company Name</p>
+          <p class="text-lg">${answers.companyName}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Contact Name</p>
+          <p class="text-lg">${answers.contactName}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Email</p>
+          <p class="text-lg">${answers.email}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Phone</p>
+          <p class="text-lg">${answers.phone}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Billing Address</p>
+          <p class="text-lg">${answers.billingAddress}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Shipping Address</p>
+          <p class="text-lg">${answers.shippingAddress}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Preferred Location</p>
+          <p class="text-lg">${answers.location}</p>
+        </div>
+        <div class="border-b pb-2">
+          <p class="text-sm text-gray-600 font-semibold">Urgency</p>
+          <p class="text-lg">${answers.urgency}</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-600 font-semibold">Additional Information</p>
+          <p class="text-lg">${answers.additionalInfo}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  function submitOrder() {
+    // Create email body
+    const emailBody = `Part Order Request
+
+Part Number: ${answers.partNumber}
+Quantity: ${answers.quantity}
+Purchase Order Number: ${answers.purchaseOrderNumber}
+
+Company Name: ${answers.companyName}
+Contact Name: ${answers.contactName}
+Email: ${answers.email}
+Phone: ${answers.phone}
+
+Billing Address: ${answers.billingAddress}
+Shipping Address: ${answers.shippingAddress}
+
+Preferred Location: ${answers.location}
+Urgency: ${answers.urgency}
+
+Additional Information: ${answers.additionalInfo}`;
+
+    const subject = `Part Order Request - ${answers.partNumber} - PO# ${answers.purchaseOrderNumber}`;
+    const mailtoLink = `mailto:repairs@gov2x.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show confirmation
+    addBotMessage("Thank you! Your email client should open with the order request. Please send the email to complete your request.");
+    addBotMessage("We'll get back to you as soon as possible!");
+  }
+
+  function restartForm() {
+    currentQuestion = 0;
+    answers = {};
+    document.getElementById('chatArea').innerHTML = '';
+    document.getElementById('inputArea').classList.remove('hidden');
+    document.getElementById('summaryArea').classList.add('hidden');
+    
+    addBotMessage("Let's start over! I'll help you submit a new part order request.");
+    setTimeout(() => askQuestion(), 1000);
+  }
+
+  // Allow pressing Enter to submit
+  document.getElementById('userInput').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      submitAnswer();
+    }
+  });
+</script>
+
+</body>
+</html>
+
