@@ -1,9 +1,0 @@
-sensor.new_display_group_a14_00271_energy
-
-sensor.new_display_group_a14_00271_energy_difference
-
-sensor.new_display_group_a14_00271_energy_saved
-
-sensor.new_display_group_a14_00271_power
-
-sensor.new_display_group_a14_00271_power_energy
